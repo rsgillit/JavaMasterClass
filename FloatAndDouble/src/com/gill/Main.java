@@ -22,6 +22,18 @@ public class Main {
         System.out.println("myFloatValue = " + myFloatValue);
         System.out.println("myDoubleValue = " + myDoubleValue);
 
+        char myChar = 'D';
+        char myUnicodeChar = '\u0A17';
+
+        System.out.println("myUnicodeChar = " + myUnicodeChar);
+
+        boolean myTrueBooleanValue = true;
+        boolean myFalseBooleanValue = false;
+
+        boolean isCustomerOverTwentyOne = true;
+
+
+
 
 
 
