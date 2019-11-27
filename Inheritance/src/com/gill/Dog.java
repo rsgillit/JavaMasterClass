@@ -8,7 +8,7 @@ public class Dog extends Animal {
     private int teeth;
     private String coat;
 
-    public Dog(String name, int brain, int body, int size, int weight, int eyes, int legs, int tail, int teeth, String coat) {
+    public Dog(String name, int size, int weight, int eyes, int legs, int tail, int teeth, String coat) {
         super(name, 1, 1, size, weight);
         this.eyes = eyes;
         this.legs = legs;
@@ -27,6 +27,28 @@ public class Dog extends Animal {
         System.out.println("Dog.eat() called");
         this.chew();
         super.eat();
+
+    }
+
+    @Override
+    public void move(int speed) {
+        System.out.println("Dog.move() called");
+        moveLegs(speed);
+        super.move(speed);
+    }
+
+    private void moveLegs(int speed) {
+        System.out.println("Dog.moveLegs() called");
+    }
+
+    public void walk() {
+        System.out.println("Dog.walk() called");
+        super.move(5);
+    }
+
+    public void run(){
+        System.out.println("Dog.run() called");
+        move(10);
 
     }
 }
