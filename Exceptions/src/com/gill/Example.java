@@ -6,13 +6,17 @@ import java.util.Scanner;
 
 public class Example {
     public static void main(String[] args) {
-//        int x = 98;
-//        int  y = 0;
-//        System.out.println(divideLBYL(x, y));
-//        System.out.println(divideEAFP(x, y));
-//        System.out.println(divide(x, y));
-        int result = divide();
-        System.out.println(result);
+
+        try {
+            int result = divide();
+            System.out.println(result);
+        } catch(ArithmeticException e) {
+            System.out.println(e.toString());
+            System.out.println("Unable to perform division, autopilot shutting down");
+        } catch(Exception e) {
+
+        }
+
     }
 
     private static int divide() {
@@ -20,15 +24,11 @@ public class Example {
         try {
             x = getInt();
             y = getInt();
-
+            System.out.println("x is " + x + ", y is " + y);
+            return x / y;
         } catch (NoSuchElementException e) {
             throw new ArithmeticException("no suitable input");
-        }
-            System.out.println("x is " + x + ", y is " + y);
-
-        try {
-            return x / y ;
-        } catch (ArithmeticException e) {
+        } catch(ArithmeticException e) {
             throw new ArithmeticException("attempt to divide by zero");
         }
     }
