@@ -1,10 +1,7 @@
 package com.gill;
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.function.IntPredicate;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class Main {
 
@@ -47,6 +44,27 @@ public class Main {
                 System.out.println(getName(getFirstName, employee));
             }
         }
+
+
+        Function<Employee, String> upperCase = employee -> employee.getName().toUpperCase();
+        Function<String, String> firstName1 = name -> name.substring(0, name.indexOf(' '));
+        Function chainedFunction = upperCase.andThen(firstName1);
+
+        System.out.println(chainedFunction.apply(employees.get(0)));
+
+        BiFunction<String, Employee, String > concAge = (String name, Employee employee) -> {
+          return name.concat(" " + employee.getAge());
+        };
+
+        String upperName = upperCase.apply(employees.get(0));
+        System.out.println(concAge.apply(upperName, employees.get(0)));
+
+        IntUnaryOperator incBy5 = i -> i + 5;
+        System.out.println(incBy5.applyAsInt(10));
+
+        Consumer<String> c1 = s -> s.toUpperCase();
+        Consumer<String> c2 = s -> System.out.println(s);
+        c1.andThen(c2).accept("Hello World");
 
 //        printEmployeesByAge(employees, "employee's age greater than 30", employee -> employee.getAge()>30);
 //        printEmployeesByAge(employees, "\nemployee's age 30 and under", employee -> employee.getAge()<=30);
